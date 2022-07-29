@@ -58,9 +58,10 @@ const SignIn = (props) => {
                     timer : 5000
                 })
             }
+            
             return swal({
                 title : 'Warning',
-                text : res,
+                text : res.data.message,
                 icon : 'warning',
                 buttons : false,
                 timer : 5000

@@ -2,10 +2,10 @@ import { api_origin } from "../constants";
 import axios from "axios";
 import { authorization } from "../utils/Helper";
 
-const header = authorization() ;
-
 export const SaveBlog = async (title, description, image, sections, folder_id) => {
     try {
+        const header = authorization() ;
+
         const fn = new FormData() ;
 
         fn.append('blog_title', title) ;
@@ -35,6 +35,8 @@ export const SaveBlog = async (title, description, image, sections, folder_id) =
 
 export const UpdateBlog = async (title, description, image, sections, blog_id, folder_id) => {
     try {
+        const header = authorization() ;
+        
         const fn = new FormData() ;
 
         fn.append('folder_id', folder_id) ;

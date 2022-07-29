@@ -25,6 +25,7 @@ import {
 } from '@mui/material' ;
 
 import { makeStyles } from '@mui/styles';
+import PaymentPopOver from './PaymentPopOver';
 
 const useStyles = makeStyles(() => ({
     root : {
@@ -67,10 +68,12 @@ const Header = (props) => {
     const productAnchorRef = React.useRef(null);
     const resourceAnchorRef = React.useRef(null);
     const settingAnchorRef = React.useRef(null);
+    const paymentAnchorRef = React.useRef(null) ;
 
     const [ isOpenProductPop , setOpenProductPop ] = React.useState(false) ;
     const [ isOpenResourcePop , setOpenResourcePop ] = React.useState(false) ;
     const [ isOpenSettingPop , setOpenSettingPop ] = React.useState(false) ;
+    const [ isOpenPaymentPop , setOpenPaymentPop ] = React.useState(false) ;
 
     const handleProductPopOver = () => {
         setOpenProductPop(!isOpenProductPop) ;
@@ -82,6 +85,10 @@ const Header = (props) => {
 
     const handleSettingPopOver = () => {
         setOpenSettingPop(!isOpenSettingPop) ;
+    }
+
+    const handlePaymentPopOver = () => {
+        setOpenPaymentPop(!isOpenPaymentPop) ;
     }
 
     React.useEffect(() => {
@@ -115,12 +122,21 @@ const Header = (props) => {
                     <Box className={classes.menuItemDiv}
                         ref={resourceAnchorRef}
                         onClick={handleResourcePopOver}
-                        // onClick={() => navigate('/blog/list')}
                     >
                         BLOG 
                         <ArrowDropDownIcon/>
                     </Box>
-                    
+                    {
+                        getCookie('access_token') && <Box className={classes.menuItemDiv}
+                            // ref={paymentAnchorRef}
+                            onClick={() => {
+                                navigate('/payment/stripe-account')
+                            }}
+                        >
+                            PAYMENT 
+                            {/* <ArrowDropDownIcon/> */}
+                        </Box>
+                    }
                 </Box>
                 {
                     !getCookie('access_token') ? <>
@@ -179,6 +195,12 @@ const Header = (props) => {
                 open={isOpenSettingPop}
                 handleSettingPopOver={handleSettingPopOver}
                 anchorEl={settingAnchorRef ? settingAnchorRef.current : null}
+            />
+
+            <PaymentPopOver
+                open={isOpenPaymentPop}
+                handlePaymentPopOver={handlePaymentPopOver}
+                anchorEl={paymentAnchorRef ? paymentAnchorRef.current : null}
             />
         </>
     )

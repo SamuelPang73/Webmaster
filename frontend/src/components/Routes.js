@@ -13,6 +13,9 @@ import Pricing from "../pages/Pricing";
 import Blog from "../pages/Blog";
 import FAQ from "../pages/FAQ";
 import Auth from "../pages/Auth";
+import Payment from "../pages/Payment";
+
+// import NFTDashboard from "../pages/main";
 
 const Routing = () => {
     return (
@@ -27,6 +30,7 @@ const Routing = () => {
             <Route path="/integrations" element={<Integrations />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/blog/*" element={<Blog />} />
+            <Route path='/payment/*' element={<Payment />} />
             <Route path="/faq" element={<FAQ />} />
         </Routes>
     );
