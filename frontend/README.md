@@ -1,6 +1,4 @@
-# WEB SOLSTICE
-
-WEB SOLSTICE is a React UI and Firebase script for SOLSITCE.
+# Web master
 
 ### Prerequisites:
 
