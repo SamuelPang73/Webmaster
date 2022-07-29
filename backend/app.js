@@ -13,6 +13,7 @@ const passportStrategy = require('./utils/passportStrategy') ;
 
 const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes') ;
+const userRoutes = require('./routes/userRoutes') ;
 
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
@@ -42,6 +43,7 @@ app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes) ;
 app.use('/api/blog', blogRoutes) ;
+app.use('/api/user', userRoutes) ;
 
 app.use('/api/files', express.static('uploads'));
 

@@ -66,6 +66,18 @@ const userSchema = new mongoose.Schema({
     street : {
         type :String,
         default  : null
+    },
+    stripe_customer_id : {
+        type : String,
+        default : null
+    },
+    stripe_account_id  :{
+        type : String,
+        default : null
+    },
+    stripe_balance : {
+        type : Number,
+        default : 0
     }
 }, { timestamps: true });
 
